@@ -11,6 +11,7 @@
     "node": "18.x"
   },
   "scripts": {
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --passWithNoTests || exit 0",
     "eject": "react-scripts eject"
