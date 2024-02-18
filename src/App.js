@@ -1,19 +1,12 @@
-import './App.css';
+// src/App.js
+import React from 'react';
+import Layout from "./components/Layout";
+import './index.css'; // Ensure this imports Tailwind CSS
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Hi, I'm Siddarth. Work in progress.
-        </p>
-        <a
-          href="https://instagram.com/cddharthsingh"
-        >
-          Meet me here instead
-        </a>
-      </header>
-    </div>
+    <Layout>
+    </Layout>
   );
 }
 
