@@ -8,10 +8,7 @@ function App() {
           Hi, I'm Siddarth. Work in progress.
         </p>
         <a
-          className="App-link"
           href="https://instagram.com/cddharthsingh"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Meet me here instead
         </a>
