@@ -5,7 +5,8 @@ import LineColumn from './LineColumn';
 import MainArea from './MainArea';
 
 export default function Layout() {
-    const [sidebarWidth, setSidebarWidth] = useState(200);
+    
+    const [sidebarWidth, setSidebarWidth] = useState(Math.floor(window.innerWidth / 7));
     const dragBarWidth = useRef(null);
 
     const startResizing = (e) => {
