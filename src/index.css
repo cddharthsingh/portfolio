@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Gilroy-Bold';
+  src: url('./fonts/Gilroy-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Light';
+  src: url('./fonts/Gilroy-Light.ttf') format('truetype');
+}
+
+
+/* HideScrollbar.css */
+.hide-scrollbar {
+  /* Hide for Chrome, Safari, Opera */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* For WebKit browsers */
+}
+
+.Gilroy-Bold {
+  font-family: "Gilroy-Bold", sans-serif;
+}
 .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
