@@ -9,7 +9,6 @@ export default function Layout() {
     const dragBarWidth = useRef(null);
 
     const startResizing = (e) => {
-        const clientX = e.clientX || e.touches[0].clientX;
         const resize = (moveEvent) => {
             const clientXMove = moveEvent.clientX || (moveEvent.touches && moveEvent.touches[0].clientX);
             let width =
