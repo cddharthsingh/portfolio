@@ -12,6 +12,11 @@
   src: url('./fonts/Gilroy-Light.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Gilroy-Regular';
+  src: url('./fonts/Gilroy-Regular.ttf') format('truetype');
+}
+
 
 /* HideScrollbar.css */
 .hide-scrollbar {
@@ -22,6 +27,13 @@
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* For WebKit browsers */
+}
+.Gilroy-Light{
+  font-family: "Gilroy-Light", sans-serif;
+}
+
+.Gilroy-Regular{
+  font-family: "Gilroy-Regular", sans-serif;
 }
 
 .Gilroy-Bold {

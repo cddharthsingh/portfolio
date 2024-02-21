@@ -10,17 +10,17 @@ const SidebarMenu = () => {
                 {
                     name: 'Facecan',
                     link: 'https://github.com/cddharthsingh/facecan',
-                    icon: <PersonSearchOutlinedIcon />,
+                    icon: <PersonSearchOutlinedIcon fontSize="small" />,
                 },
                 {
                     name: 'Time Table Generator',
                     link: 'https://github.com/cddharthsingh/facecan',
-                    icon: <PersonSearchOutlinedIcon />,
+                    icon: <PersonSearchOutlinedIcon fontSize="small" />,
                 },
                 {
                     name: 'Old School Tailor',
                     link: 'https://github.com/cddharthsingh/facecan',
-                    icon: <PersonSearchOutlinedIcon />,
+                    icon: <PersonSearchOutlinedIcon fontSize="small" />,
                 },
             ],
         },
@@ -30,42 +30,46 @@ const SidebarMenu = () => {
                 {
                     name: 'LinkedIn',
                     link: 'https://github.com/cddharthsingh/facecan',
-                    icon: <PersonSearchOutlinedIcon />,
+                    icon: <PersonSearchOutlinedIcon fontSize="small" />,
                 },
                 {
                     name: 'Instagram',
                     link: 'https://github.com/cddharthsingh/facecan',
-                    icon: <PersonSearchOutlinedIcon />,
+                    icon: <PersonSearchOutlinedIcon fontSize="small" />,
                 },
                 {
                     name: 'Github',
                     link: 'https://github.com/cddharthsingh/facecan',
-                    icon: <PersonSearchOutlinedIcon />,
+                    icon: <PersonSearchOutlinedIcon fontSize="small" />,
                 },
             ],
         },
         {
             name: 'Experiences',
             subMenu: [
-                { name: 'Xola', link: 'https://github.com/cddharthsingh/facecan', icon: <PersonSearchOutlinedIcon /> },
+                {
+                    name: 'Xola',
+                    link: 'https://github.com/cddharthsingh/facecan',
+                    icon: <PersonSearchOutlinedIcon fontSize="small" />,
+                },
                 {
                     name: 'Symphony Talent',
                     link: 'https://github.com/cddharthsingh/facecan',
-                    icon: <PersonSearchOutlinedIcon />,
+                    icon: <PersonSearchOutlinedIcon fontSize="small" />,
                 },
                 {
                     name: 'Intrigin',
                     link: 'https://github.com/cddharthsingh/facecan',
-                    icon: <PersonSearchOutlinedIcon />,
+                    icon: <PersonSearchOutlinedIcon fontSize="small" />,
                 },
             ],
         },
     ];
 
     return (
-        <div>
+        <div className="select-none">
             {menu.map((item) => (
-                <MenuHeader menuContent={item}></MenuHeader>
+                <MenuHeader menuContent={item} key={item.name}></MenuHeader>
             ))}
         </div>
     );

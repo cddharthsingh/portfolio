@@ -10,15 +10,15 @@ const MenuHeader = ({ menuContent }) => {
     };
     console.log('SUB:', subMenu);
     return (
-        <div className="bg-zinc-950 text-white">
-            <div className="p-2 cursor-pointer bg-zinc-950 hover:bg-zinc-900" onClick={toggleHeader}>
+        <div className="bg-zinc-950 text-white text-sm Gilroy-Regular">
+            <div className="px-5 py-1 cursor-pointer bg-zinc-950 hover:bg-zinc-900" onClick={toggleHeader}>
                 {isHeaderCollapsed ? (
                     <span>
-                        <KeyboardArrowRightIcon />
+                        <KeyboardArrowRightIcon fontSize="small" />
                     </span>
                 ) : (
                     <span>
-                        <KeyboardArrowUpIcon />
+                        <KeyboardArrowUpIcon fontSize="small" />
                     </span>
                 )}
                 {menuContent.name}
@@ -34,7 +34,7 @@ const MenuHeader = ({ menuContent }) => {
 
 const MenuItem = ({ item }) => {
     return (
-        <div className="pl-4">
+        <div className="px-5 py-1 pl-10 cursor-pointer bg-zinc-950 hover:bg-zinc-900">
             {item.icon} <span className="pl-2">{item.name}</span>
         </div>
     );
