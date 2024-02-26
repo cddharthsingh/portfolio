@@ -1,13 +1,16 @@
-// src/App.js
 import React from 'react';
-import Layout from "./components/Layout";
-import './index.css'; // Ensure this imports Tailwind CSS
+import Layout from './components/Layout';
+import './index.css';
+import { MenuProvider } from './services/menuContext';
+import data from './model/Menu';
 
 function App() {
-  return (
-    <Layout>
-    </Layout>
-  );
+    const initialMenuContent = data;
+    return (
+        <MenuProvider initialMenuContent={initialMenuContent}>
+            <Layout />
+        </MenuProvider>
+    );
 }
 
 export default App;
