@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Sidebar from './Sidebar';
 import BottomBlock from './BottomBlock';
-import LineColumn from './LineColumn';
 import MainArea from './MainArea';
 
 export default function Layout() {
@@ -36,13 +35,10 @@ export default function Layout() {
                 ref={dragBarWidth}
                 onMouseDown={startResizing}
                 onTouchStart={startResizing}
-                className="cursor-col-resize bg-zinc-950 w-1"
+                className="cursor-col-resize bg-zinc-900 w-px"
             />
-            <div className="flex flex-col w-5/6 relative">
-                <div className="flex overflow-auto h-4/5 hide-scrollbar">
-                    <LineColumn></LineColumn>
-                    <MainArea></MainArea>
-                </div>
+            <div style={{ width: `${window.innerWidth - sidebarWidth}px` }} className="flex flex-col relative">
+                <MainArea></MainArea>
                 <BottomBlock></BottomBlock>
             </div>
         </div>
