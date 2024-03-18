@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import Sidebar from './Sidebar';
-import BottomBlock from './BottomBlock';
+import SidebarMenu from './SidebarMenu';
+import Skills from './Skills';
 import MainArea from './MainArea';
 
 export default function Layout() {
@@ -30,7 +30,10 @@ export default function Layout() {
 
     return (
         <div className="flex h-screen bg-zinc-900">
-            <Sidebar width={sidebarWidth}></Sidebar>
+            <div className="bg-zinc-950 select-none ">
+                <div className="poppins-bold text-2xl text-zinc-200 p-4">SIDDHARTH SINGH</div>
+                <SidebarMenu width={sidebarWidth}></SidebarMenu>
+            </div>
             <div
                 ref={dragBarWidth}
                 onMouseDown={startResizing}
@@ -39,7 +42,7 @@ export default function Layout() {
             />
             <div style={{ width: `${window.innerWidth - sidebarWidth}px` }} className="flex flex-col relative">
                 <MainArea></MainArea>
-                <BottomBlock></BottomBlock>
+                <Skills></Skills>
             </div>
         </div>
     );
