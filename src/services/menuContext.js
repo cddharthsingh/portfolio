@@ -1,58 +1,56 @@
-// MenuContext.js
-import React, { createContext, useState, useContext } from 'react';
+// menuContext.js
+import React, { createContext, useContext, useState } from 'react';
 
 const MenuContext = createContext();
+
+const resetIsActive = (items) => {
+    items.forEach((item) => {
+        item.isActive = false;
+        if (item.children) {
+            resetIsActive(item.children);
+        }
+    });
+};
+
+const findAndPerformAction = (items, key, action) => {
+    for (let item of items) {
+        if (item.key === key) {
+            action(item);
+            return true;
+        } else if (item.children) {
+            if (findAndPerformAction(item.children, key, action)) return true;
+        }
+    }
+    return false;
+};
 
 export const MenuProvider = ({ children, initialMenuContent }) => {
     const [menu, setMenu] = useState(initialMenuContent || []);
 
-    const setIsOpen = (menuItem, value) => {
+    const setIsOpen = (key, isOpen) => {
         setMenu((prevMenu) => {
             const updatedMenu = [...prevMenu];
-            const menuItemIndex = updatedMenu.findIndex((menuGroup) => menuGroup.name === menuItem.parent);
-            if (menuItemIndex !== -1) {
-                const updatedSubMenu = [...updatedMenu[menuItemIndex].subMenu];
-                const subMenuItemIndex = updatedSubMenu.findIndex((item) => item.key === menuItem.key);
-                if (subMenuItemIndex !== -1) {
-                    updatedSubMenu[subMenuItemIndex] = { ...updatedSubMenu[subMenuItemIndex], isOpen: value };
-                    updatedMenu[menuItemIndex] = { ...updatedMenu[menuItemIndex], subMenu: updatedSubMenu };
-                }
+            findAndPerformAction(updatedMenu, key, (item) => {
+                item.isOpen = isOpen;
+            });
+            return updatedMenu;
+        });
+    };
+
+    const setIsActive = (key, isActive) => {
+        setMenu((prevMenu) => {
+            const updatedMenu = [...prevMenu];
+            // Reset isActive for all items
+            if (isActive) {
+                resetIsActive(updatedMenu);
             }
+            // Set isActive to true for the specific item
+            findAndPerformAction(updatedMenu, key, (item) => (item.isActive = isActive));
             return updatedMenu;
         });
     };
 
-    const setIsActive = (menuItem, value) => {
-        setMenu((prevMenu) => {
-            const updatedMenu = prevMenu.map((menuGroup) => {
-                const updatedSubMenu = menuGroup.subMenu.map((item) => {
-                    if (item.key === menuItem.key) {
-                        return { ...item, isActive: value };
-                    }
-                    return item;
-                });
-                return { ...menuGroup, subMenu: updatedSubMenu };
-            });
-            return updatedMenu;
-        });
-    };
-
-    const updateItem = (menuItem) => {
-        setMenu((prevMenu) => {
-            const updatedMenu = prevMenu.map((menuGroup) => {
-                const updatedSubMenu = menuGroup.subMenu.map((item) => {
-                    if (item.key === menuItem.key) {
-                        return menuItem;
-                    }
-                    return item;
-                });
-                return { ...menuGroup, subMenu: updatedSubMenu };
-            });
-            return updatedMenu;
-        });
-    };
-
-    return <MenuContext.Provider value={{ menu, setIsOpen, setIsActive, updateItem }}>{children}</MenuContext.Provider>;
+    return <MenuContext.Provider value={{ menu, setIsOpen, setIsActive }}>{children}</MenuContext.Provider>;
 };
 
 export const useMenu = () => useContext(MenuContext);

@@ -11,7 +11,7 @@ export default function MainArea() {
         }
     }, []);
     return (
-        <div className="flex flex-col h-4/5 overflow-auto relative hide-scrollbar">
+        <div className="flex flex-col h-3/4 overflow-auto relative hide-scrollbar">
             <TabBar></TabBar>
             <div className="pt-10 flex-1 flex flex-col" id="displayArea">
                 <div className="flex flex-row">

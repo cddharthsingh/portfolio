@@ -2,10 +2,10 @@ import React from 'react';
 import Layout from './components/Layout';
 import './index.css';
 import { MenuProvider } from './services/menuContext';
-import data from './model/Menu';
+import { data2 } from './model/Menu';
 
 function App() {
-    const initialMenuContent = data;
+    const initialMenuContent = data2;
     return (
         <MenuProvider initialMenuContent={initialMenuContent}>
             <Layout />
