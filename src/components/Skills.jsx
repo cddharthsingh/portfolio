@@ -12,7 +12,7 @@ export default function Skills() {
 
 export const SkillsComponent = ({ skills }) => {
     return (
-        <div className="flex space-x-8 overflow-x-auto p-4">
+        <div className="flex space-x-8 overflow-x-auto p-4 hide-scrollbar">
             {skills.map((skill) => (
                 <div key={skill.key} className="flex flex-col items-center">
                     <div className="relative">
