@@ -1,4 +1,3 @@
-// SidebarMenu.jsx
 import React from 'react';
 import { useMenu } from '../services/menuContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -31,7 +30,7 @@ const MenuItem = ({ item, paddingLeft }) => {
     const { setIsOpen, setIsActive } = useMenu();
 
     const handleItemClick = () => {
-        setIsOpen(item.key, true); // Assuming we want to keep isOpen true persistently for clicked items
+        setIsOpen(item.key, true);
         setIsActive(item.key, true);
     };
 

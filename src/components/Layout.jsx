@@ -29,8 +29,8 @@ export default function Layout() {
     };
 
     return (
-        <div className="flex h-screen bg-zinc-900">
-            <div className={`w-[${sidebarWidth}px] hidden sm:block flex-shrink-0 bg-zinc-950 select-none`}>
+        <div className="flex h-screen bg-semi-dark-grey">
+            <div className={`w-[${sidebarWidth}px] hidden sm:block flex-shrink-0 bg-dark-grey select-none`}>
                 <div className="poppins-bold text-2xl text-zinc-200 p-4">SIDDHARTH SINGH</div>
                 <SidebarMenu width={sidebarWidth}></SidebarMenu>
             </div>
@@ -38,7 +38,7 @@ export default function Layout() {
                 ref={dragBarWidth}
                 onMouseDown={startResizing}
                 onTouchStart={startResizing}
-                className="cursor-col-resize bg-zinc-900 w-px hidden sm:block"
+                className="cursor-col-resize bg-semi-dark-grey w-px hidden sm:block"
             />
             <div
                 style={{ width: `${window.innerWidth - sidebarWidth}px` }}
