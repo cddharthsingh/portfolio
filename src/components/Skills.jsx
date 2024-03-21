@@ -3,7 +3,7 @@ import { skills } from '../model/Skills';
 
 export default function Skills() {
     return (
-        <div className="h-1/4 bg-zinc-950 border-t p-5 border-zinc-800 w-full text-cyan-700 fixed bottom-0 select-none">
+        <div className="h-1/4 bg-dark-grey border-t p-5 border-zinc-800 w-full text-cyan-700 fixed bottom-0 select-none">
             <div className="text-lg poppins-medium mb-2">SKILLS</div>
             <SkillsComponent skills={skills} />
         </div>
@@ -16,7 +16,7 @@ export const SkillsComponent = ({ skills }) => {
             {skills.map((skill) => (
                 <div key={skill.key} className="flex flex-col items-center">
                     <div className="relative">
-                        <div className="w-20 h-20 rounded-full flex items-center justify-center bg-zinc-950">
+                        <div className="w-20 h-20 rounded-full flex items-center justify-center bg-dark-grey">
                             {skill.icon}
                         </div>
                         <svg className="absolute top-0 right-0 bottom-0 left-0" viewBox="0 0 36 36">

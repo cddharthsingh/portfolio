@@ -1,4 +1,3 @@
-// menuContext.js
 import React, { createContext, useContext, useState } from 'react';
 
 const MenuContext = createContext();
@@ -32,6 +31,9 @@ export const MenuProvider = ({ children, initialMenuContent }) => {
             const updatedMenu = [...prevMenu];
             findAndPerformAction(updatedMenu, key, (item) => {
                 item.isOpen = isOpen;
+                if (!isOpen) {
+                    setIsActive(key, false);
+                }
             });
             return updatedMenu;
         });
@@ -40,11 +42,9 @@ export const MenuProvider = ({ children, initialMenuContent }) => {
     const setIsActive = (key, isActive) => {
         setMenu((prevMenu) => {
             const updatedMenu = [...prevMenu];
-            // Reset isActive for all items
             if (isActive) {
                 resetIsActive(updatedMenu);
             }
-            // Set isActive to true for the specific item
             findAndPerformAction(updatedMenu, key, (item) => (item.isActive = isActive));
             return updatedMenu;
         });

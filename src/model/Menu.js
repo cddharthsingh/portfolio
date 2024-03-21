@@ -4,6 +4,14 @@ import { faPython, faWordpressSimple, faLinkedinIn, faInstagram, faGithub } from
 
 export const data2 = [
     {
+        name: 'About',
+        key: `about`,
+        link: 'https://github.com/cddharthsingh/facecan',
+        icon: <PersonSearchOutlinedIcon fontSize="small" />,
+        isOpen: true,
+        isActive: true,
+    },
+    {
         name: 'Projects',
         key: 'projects',
         children: [
