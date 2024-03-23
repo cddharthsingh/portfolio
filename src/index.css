@@ -156,10 +156,13 @@
 }
 
 .bg-semi-dark-grey {
-  background-color: #181818;
+  background-color: #181818 !important;
 }
 
 .bg-grey {
   background-color: #1e1e1e;
+}
+
+.box-shadow-grey {
   box-shadow: 0 0 15px rgba(75, 75, 75, 0.623);
 }

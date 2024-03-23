@@ -19,19 +19,22 @@ const Header = ({ item, paddingLeft }) => {
         >
             <FontAwesomeIcon
                 icon={item.isOpen ? faFolderOpen : faFolder}
-                style={{ color: '#de8e04', marginRight: '4px' }}
+                style={{ color: '#de8e04', marginRight: '8px' }}
             />
             {item.name}
         </div>
     );
 };
 
-const MenuItem = ({ item, paddingLeft }) => {
+const MenuItem = ({ item, paddingLeft, onTap }) => {
     const { setIsOpen, setIsActive } = useMenu();
 
     const handleItemClick = () => {
         setIsOpen(item.key, true);
         setIsActive(item.key, true);
+        if (onTap) {
+            onTap();
+        }
     };
 
     return (
@@ -41,12 +44,12 @@ const MenuItem = ({ item, paddingLeft }) => {
             style={{ paddingLeft: paddingLeft }}
         >
             {item.icon}
-            <span className="pl-1">{item.name}</span>
+            <span className="pl-2">{item.name}</span>
         </div>
     );
 };
 
-const SidebarMenu = ({ width }) => {
+const SidebarMenu = ({ width, onTap = null }) => {
     const { menu } = useMenu();
 
     const renderMenuItems = (items, level) => {
@@ -60,14 +63,14 @@ const SidebarMenu = ({ width }) => {
                             {item.isOpen && <div>{renderMenuItems(item.children, level + 1)}</div>}
                         </>
                     ) : (
-                        <MenuItem item={item} paddingLeft={paddingLeft} />
+                        <MenuItem item={item} paddingLeft={paddingLeft} onTap={onTap} />
                     )}
                 </React.Fragment>
             </div>
         ));
     };
 
-    return <div className="pt-3 text-zinc-400">{renderMenuItems(menu, 1)}</div>;
+    return <div className={`${onTap ? 'pt-[3.1rem]' : 'pt-3'} text-zinc-400`}>{renderMenuItems(menu, 1)}</div>;
 };
 
 export default SidebarMenu;

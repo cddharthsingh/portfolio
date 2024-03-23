@@ -25,6 +25,7 @@ const findAndPerformAction = (items, key, action) => {
 
 export const MenuProvider = ({ children, initialMenuContent }) => {
     const [menu, setMenu] = useState(initialMenuContent || []);
+    const [currentActive, setCurrentActive] = useState('about');
 
     const setIsOpen = (key, isOpen) => {
         setMenu((prevMenu) => {
@@ -40,6 +41,9 @@ export const MenuProvider = ({ children, initialMenuContent }) => {
     };
 
     const setIsActive = (key, isActive) => {
+        if (isActive) {
+            setCurrentActive(key);
+        }
         setMenu((prevMenu) => {
             const updatedMenu = [...prevMenu];
             if (isActive) {
@@ -50,7 +54,9 @@ export const MenuProvider = ({ children, initialMenuContent }) => {
         });
     };
 
-    return <MenuContext.Provider value={{ menu, setIsOpen, setIsActive }}>{children}</MenuContext.Provider>;
+    return (
+        <MenuContext.Provider value={{ menu, setIsOpen, setIsActive, currentActive }}>{children}</MenuContext.Provider>
+    );
 };
 
 export const useMenu = () => useContext(MenuContext);

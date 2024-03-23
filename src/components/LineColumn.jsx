@@ -1,4 +1,4 @@
-export default function LineColumn({ height = 650 }) {
+export default function LineColumn({ height = 500 }) {
     const lineCount = Math.floor(height / 20) - 1;
     const lineNumber = [...Array(lineCount).keys()];
     return (
