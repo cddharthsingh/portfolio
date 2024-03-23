@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useMenu } from '../services/menuContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
@@ -51,6 +51,20 @@ const MenuItem = ({ item, paddingLeft, onTap }) => {
 
 const SidebarMenu = ({ width, onTap = null }) => {
     const { menu } = useMenu();
+    const contentRef = useRef(null);
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (onTap && contentRef.current && !contentRef.current.contains(event.target)) {
+                onTap();
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [onTap]);
 
     const renderMenuItems = (items, level) => {
         let paddingLeft = level * 15 + 'px';
@@ -70,7 +84,11 @@ const SidebarMenu = ({ width, onTap = null }) => {
         ));
     };
 
-    return <div className={`${onTap ? 'pt-[3.1rem]' : 'pt-3'} text-zinc-400`}>{renderMenuItems(menu, 1)}</div>;
+    return (
+        <div className={`${onTap ? 'pt-[3.1rem]' : 'pt-3'} text-zinc-400`} ref={contentRef}>
+            {renderMenuItems(menu, 1)}
+        </div>
+    );
 };
 
 export default SidebarMenu;
